@@ -41,7 +41,7 @@ class Ocupacao(models.Model):
         verbose_name = "Ocupação"
         verbose_name_plural = "Ocupações"
 
-class Pessoas(models.Model):
+class Pessoa(models.Model):
     nome = models.CharField(max_length=100, verbose_name="Nome da pessoa")
     pai = models.CharField(max_length=100, verbose_name="Nome do pai")
     mae = models.CharField(max_length=100, verbose_name="Nome da mãe")
@@ -93,7 +93,7 @@ class Disciplinas(models.Model):
 class Matricula(models.Model):
     instituicao = models.ForeignKey(Instituicao, on_delete=models.CASCADE, verbose_name="Instituição")
     curso = models.ForeignKey(Cursos, on_delete=models.CASCADE, verbose_name="Cursos")
-    pessoa = models.ForeignKey(Pessoas, on_delete=models.CASCADE, verbose_name="Pessoa")
+    pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE, verbose_name="Pessoa")
     data_inicio = models.DateField( verbose_name="Data de inicio")
     data_prev_termino = models.DateField( verbose_name = "Data previsão termino")
     def __str__(self):
@@ -114,7 +114,7 @@ class Avaliacoes(models.Model):
         verbose_name_plural = "Avaliações"
 
 class Frequencia(models.Model):
-    pessoa = models.ForeignKey(Pessoas, on_delete=models.CASCADE, verbose_name="Pessoa")
+    pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE, verbose_name="Pessoa")
     curso = models.ForeignKey(Cursos, on_delete=models.CASCADE, verbose_name="Cursos")
     disciplina = models.ForeignKey(Disciplinas, on_delete=models.CASCADE, verbose_name="Disciplinas")
     numero_faltas = models.CharField(max_length=100, verbose_name="Faltas")
@@ -139,7 +139,7 @@ class Turmas(models.Model):
 class Ocorrencias(models.Model):
     descricao = models.CharField(max_length=100, verbose_name="Descrição")
     data = models.DateField(verbose_name = "Data")
-    pessoa = models.ForeignKey(Pessoas, on_delete=models.CASCADE, verbose_name="Pessoa")
+    pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE, verbose_name="Pessoa")
     curso = models.ForeignKey(Cursos, on_delete=models.CASCADE, verbose_name="Cursos")
     disciplina = models.ForeignKey(Disciplinas, on_delete=models.CASCADE, verbose_name="Disciplinas")
 

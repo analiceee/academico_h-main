@@ -6,13 +6,14 @@ from django.contrib import messages
 # Create your views here.
 class IndexView(View):
     def get(self, request, *args, **kwargs):
-        return render(request, 'index.html') 
+        pessoa = Pessoa.objects.all()
+        return render(request, 'index.html', {'pessoas' : pessoa}) 
     
 
-class PessoasView(View):
-    def get(self, request, *args, **kwargs):
-        pessoas = Pessoas.objects.all()
-        return render(request, 'pessoas.html', {'pesssoas' : pessoas})
+# class PessoasView(View):
+#     def get(self, request, *args, **kwargs):
+#         pessoas = Pessoa.objects.all()
+#         return render(request, 'pessoas.html', {'pessoas' : pessoas})
 
 class AreaSaberView(View):
     def get(self, request, *args, **kwargs):
@@ -82,8 +83,8 @@ class PeriodoCursoView(View):
 
 class PessoasView(View):
     def get(self, request, *args, **kwargs):
-        pessoa = Pessoas.objects.all()
-        return render(request, 'pessoas.html', {'pessoa' : pessoa})    
+        pessoa = Pessoa.objects.all()
+        return render(request, 'pessoas.html', {'pessoas' : pessoa})    
 
 class TipoAvaliacaoView(View):
     def get(self, request, *args, **kwargs):
